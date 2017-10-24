@@ -7,7 +7,7 @@
     tools:context="cloudist.cc.progressavatarview.MainActivity"
     android:gravity="center">
 
-    <cloudist.cc.library.CircleImageView
+    <cloudist.cc.library.ProgressAvatarView
         android:id="@+id/circle_image_view"
         android:layout_width="100dp"
         android:layout_height="100dp"
