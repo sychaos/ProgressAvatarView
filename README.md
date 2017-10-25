@@ -11,3 +11,4 @@
   circleImageView.startAnim() 
   // stopAnim
   circleImageView.stopAnim()
+'''
