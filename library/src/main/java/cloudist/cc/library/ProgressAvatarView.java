@@ -103,16 +103,16 @@ public class ProgressAvatarView extends ImageView {
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ProgressAvatarView, defStyle, 0);
 
-        mBorderWidth = a.getDimensionPixelSize(R.styleable.ProgressAvatarView_civ_border_width, DEFAULT_BORDER_WIDTH);
-        mBorderColor = a.getColor(R.styleable.ProgressAvatarView_civ_border_color, DEFAULT_BORDER_COLOR);
-        mBorderOverlay = a.getBoolean(R.styleable.ProgressAvatarView_civ_border_overlay, DEFAULT_BORDER_OVERLAY);
+        mBorderWidth = a.getDimensionPixelSize(R.styleable.ProgressAvatarView_pav_border_width, DEFAULT_BORDER_WIDTH);
+        mBorderColor = a.getColor(R.styleable.ProgressAvatarView_pav_border_color, DEFAULT_BORDER_COLOR);
+        mBorderOverlay = a.getBoolean(R.styleable.ProgressAvatarView_pav_border_overlay, DEFAULT_BORDER_OVERLAY);
 
-        // Look for deprecated civ_fill_color if civ_circle_background_color is not set
-        if (a.hasValue(R.styleable.ProgressAvatarView_civ_circle_background_color)) {
-            mCircleBackgroundColor = a.getColor(R.styleable.ProgressAvatarView_civ_circle_background_color,
+        // Look for deprecated pav_fill_color if pav_circle_background_color is not set
+        if (a.hasValue(R.styleable.ProgressAvatarView_pav_circle_background_color)) {
+            mCircleBackgroundColor = a.getColor(R.styleable.ProgressAvatarView_pav_circle_background_color,
                     DEFAULT_CIRCLE_BACKGROUND_COLOR);
-        } else if (a.hasValue(R.styleable.ProgressAvatarView_civ_fill_color)) {
-            mCircleBackgroundColor = a.getColor(R.styleable.ProgressAvatarView_civ_fill_color,
+        } else if (a.hasValue(R.styleable.ProgressAvatarView_pav_fill_color)) {
+            mCircleBackgroundColor = a.getColor(R.styleable.ProgressAvatarView_pav_fill_color,
                     DEFAULT_CIRCLE_BACKGROUND_COLOR);
         }
 

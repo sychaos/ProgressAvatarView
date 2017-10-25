@@ -12,7 +12,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/aaa"
-        app:civ_border_width="5dp"
-        app:civ_border_color="#FF000000"/>
+        app:pav_border_width="5dp"
+        app:pav_border_color="#FF000000"/>
 
 </LinearLayout>

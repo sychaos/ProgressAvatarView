@@ -10,13 +10,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val CircleImageView = findViewById<ProgressAvatarView>(R.id.circle_image_view)
-        CircleImageView.post {
-            CircleImageView.startAnim()
+        val circleImageView = findViewById<ProgressAvatarView>(R.id.circle_image_view)
+        circleImageView.post {
+            circleImageView.startAnim()
         }
 
-        CircleImageView.postDelayed({
-            CircleImageView.finishAnim()
-        }, 3000)
+        circleImageView.postDelayed({
+            circleImageView.stopAnim()
+        }, 10000)
     }
 }
