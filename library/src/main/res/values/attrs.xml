@@ -4,7 +4,6 @@
         <attr name="pav_border_width" format="dimension" />
         <attr name="pav_border_color" format="color" />
         <attr name="pav_border_overlay" format="boolean" />
-        <!-- {@deprecated Use pav_circlebackground_color instead.} -->
         <attr name="pav_fill_color" format="color" />
         <attr name="pav_circle_background_color" format="color" />
     </declare-styleable>
