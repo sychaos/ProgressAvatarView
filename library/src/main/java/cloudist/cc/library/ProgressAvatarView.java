@@ -166,10 +166,13 @@ public class ProgressAvatarView extends ImageView {
         }
 
         if (mCircleBackgroundColor != Color.TRANSPARENT) {
+            // 画背景
             canvas.drawCircle(mDrawableRect.centerX(), mDrawableRect.centerY(), mDrawableRadius, mCircleBackgroundPaint);
         }
+        // 画图片
         canvas.drawCircle(mDrawableRect.centerX(), mDrawableRect.centerY(), mDrawableRadius, mBitmapPaint);
         if (mBorderWidth > 0) {
+            // 画进度
             canvas.drawArc(mProgressRect, mProgress, mCover, false, mBorderPaint);
         }
     }
@@ -381,6 +384,7 @@ public class ProgressAvatarView extends ImageView {
         }
     }
 
+    // 每次initialize都会调用的方法 用以获取Bitmap
     private void initializeBitmap() {
         if (mDisableCircularTransformation) {
             mBitmap = null;
@@ -390,6 +394,7 @@ public class ProgressAvatarView extends ImageView {
         setup();
     }
 
+    // 如何把Bitmap裁剪适应的成圆形
     private void setup() {
         if (!mReady) {
             mSetupPending = true;
@@ -405,9 +410,14 @@ public class ProgressAvatarView extends ImageView {
             return;
         }
 
+        //  BitmapShader是Shader的子类，可以通过Paint.setShader（Shader shader）进行设置
+        //  mBitmapShader这里用来拉抻
+        //  这里我们只关注BitmapShader，构造方法：
+        //  mBitmapShader = new BitmapShader(bitmap, TileMode.CLAMP, TileMode.CLAMP); CLAMP 拉伸 REPEAT 重复 MIRROR 镜像
         mBitmapShader = new BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
 
         mBitmapPaint.setAntiAlias(true);
+        // 设置贴图 非常重要
         mBitmapPaint.setShader(mBitmapShader);
 
         mBorderPaint.setStyle(Paint.Style.STROKE);
@@ -422,8 +432,9 @@ public class ProgressAvatarView extends ImageView {
         mBitmapHeight = mBitmap.getHeight();
         mBitmapWidth = mBitmap.getWidth();
 
-        //mBorderRect应该是边框的位置
+        //mBorderRect边缘位置
         mBorderRect.set(calculateBounds());
+        //边缘半径
         mBorderRadius = Math.min((mBorderRect.height() - mBorderWidth) / 2.0f, (mBorderRect.width() - mBorderWidth) / 2.0f);
 
         //mDrawableRect应该是bitmap的位置
@@ -431,10 +442,11 @@ public class ProgressAvatarView extends ImageView {
         if (!mBorderOverlay && mBorderWidth > 0) {
             mDrawableRect.inset(mBorderWidth - 1.0f, mBorderWidth - 1.0f);
         }
+        //图片半径
         mDrawableRadius = Math.min(mDrawableRect.height() / 2.0f, mDrawableRect.width() / 2.0f);
 
-        mProgressRect.set(new RectF(mBorderRect.centerX() - mBorderRadius, mBorderRect.centerY() - mBorderRadius,
-                mBorderRect.centerX() + mBorderRadius, mBorderRect.centerY() + mBorderRadius));
+        mProgressRect.set(mBorderRect.centerX() - mBorderRadius, mBorderRect.centerY() - mBorderRadius,
+                mBorderRect.centerX() + mBorderRadius, mBorderRect.centerY() + mBorderRadius);
 
         applyColorFilter();
         updateShaderMatrix();
